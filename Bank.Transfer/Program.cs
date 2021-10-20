@@ -1,4 +1,5 @@
 ﻿using System;
+using Bank.Transfer.Class.Account;
 
 namespace Bank.Transfer
 {
