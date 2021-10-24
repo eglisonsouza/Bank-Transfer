@@ -24,13 +24,13 @@ namespace Bank.Transfer
                         InsertAccount();
                         break;
                     case "3":
-                        //Transfer();
+                        Transfer();
                         break;
                     case "4":
-                        //Withdraw();
+                        Withdraw();
                         break;
                     case "5":
-                        //Deposit();
+                        Deposit();
                         break;
                     case "C":
                         Console.Clear();
@@ -45,7 +45,44 @@ namespace Bank.Transfer
             Console.WriteLine("Thank you for using our services.");
             Console.ReadLine();
         }
+        
+        private static void Transfer()
+        {
+            Console.WriteLine("Type it number of account origin");
+            int inputNumberAccountOrigin = Convert.ToInt16(Console.ReadLine());
 
+            Console.WriteLine("Type it number of account destination");
+            int inputNumberAccountDestination = Convert.ToInt16(Console.ReadLine());
+            
+            Console.WriteLine("Type it value of transfer");
+            double inputValueTransfer = Convert.ToDouble(Console.ReadLine());
+
+            _accounts[inputNumberAccountOrigin].Transfer(value: inputValueTransfer, destinationAccount: _accounts[inputNumberAccountDestination]);
+        }
+
+
+        private static void Deposit()
+        {
+            Console.WriteLine("Type it number of account");
+            int inputNumberAccount = Convert.ToInt16(Console.ReadLine());
+
+            Console.WriteLine("Type it value of deposit");
+            double inputValueDeposit = Convert.ToDouble(Console.ReadLine());
+
+            _accounts[inputNumberAccount].Deposit(inputValueDeposit);
+        }
+
+        private static void Withdraw()
+        {
+            Console.WriteLine("Type it number of account");
+            int inputNumberAccount = Convert.ToInt16(Console.ReadLine());
+
+            Console.WriteLine("Type it value of withdraw");
+            double inputValueWithdraw = Convert.ToDouble(Console.ReadLine());
+
+            _accounts[inputNumberAccount].WithdrawMoney(inputValueWithdraw);
+        }
+        
         private static void ListAccount()
         {
             if (_accounts.Count.Equals(0))
